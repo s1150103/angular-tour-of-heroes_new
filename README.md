@@ -1,6 +1,5 @@
 # angular-tour-of-heroes
-
-
+会社の課題です。
 
 ## Getting started
 
