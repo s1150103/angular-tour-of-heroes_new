@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AngularTourOfHeroes</title>
+  <title>AngularTourOfHeroes</title> <!-- ブラウザのタブに表示されるタイトル -->
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <!-- 
+    表示の仕組み：
+    1. <app-root></app-root> がAngularアプリのエントリーポイント
+    2. main.ts → app.module.ts → AppComponent の順で読み込まれる
+    3. AppComponentのselector: 'app-root' がこの<app-root>と一致
+    4. AppComponentのテンプレート（app.component.html）がここに挿入される
+    5. 結果的に「Tour of Heroes」がh1要素として表示される
+  -->
   <app-root></app-root>
 </body>
 </html>
