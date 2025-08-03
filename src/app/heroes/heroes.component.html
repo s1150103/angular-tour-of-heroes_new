@@ -1,8 +1,33 @@
+<!-- 
+  HeroesComponentのテンプレート：ヒーロー情報の表示と編集画面
+  
+  主な機能：
+  1. ヒーロー名の表示（大文字変換パイプ付き）
+  2. ヒーローIDと名前の表示
+  3. 双方向データバインディングによる名前編集
+-->
+
+<!-- ヒーローの詳細情報のヘッダー -->
+<!-- {{hero.name | uppercase}}：hero.nameを大文字に変換して表示（パイプ機能） -->
+<!-- heroes.component.tsのheroオブジェクトからnameプロパティを取得 -->
 <h2>{{hero.name | uppercase}} Details</h2>
+
+<!-- ヒーローIDの表示 -->
+<!-- {{hero.id}}：heroオブジェクトのidプロパティ（数値）を表示 -->
 <div><span>id: </span>{{hero.id}}</div>
+
+<!-- ヒーロー名の表示 -->
+<!-- {{hero.name}}：heroオブジェクトのnameプロパティ（文字列）を表示 -->
 <div><span>name: </span>{{hero.name}}</div>
 
+<!-- ヒーロー名前の編集フォーム -->
 <div>
+  <!-- ラベルとinput要素の関連付け（アクセシビリティ向上） -->
   <label for="name">Hero name: </label>
+  
+  <!-- 双方向データバインディング [(ngModel)] -->
+  <!-- inputの値変更 → heroオブジェクトのnameプロパティが自動更新 -->
+  <!-- heroオブジェクトのname変更 → inputの表示値が自動更新 -->
+  <!-- FormsModuleのインポートが必要 -->
   <input id="name" [(ngModel)]="hero.name" placeholder="name">
 </div>

@@ -1,19 +1,23 @@
+// AngularのコアライブラリからComponentデコレータをインポート
 import {Component} from '@angular/core';
 
-// NgModuleベースのポイント：
+// NgModuleベースのAngularコンポーネントの特徴：
 // 1. standalone: true を設定しない（スタンドアロンコンポーネントではない）
 // 2. このコンポーネントはapp.module.tsのdeclarationsに登録される
 // 3. 依存するサービスやパイプはmodule経由でインポートされる
 
-// 表示の仕組み：
-// selector: 'app-root' → index.htmlの<app-root></app-root>と一致
-// templateUrl → app.component.htmlの内容がブラウザに表示される
-// styleUrls → app.component.cssのスタイルが適用される
+// アプリケーションの表示の仕組み：
+// 1. index.htmlの<app-root></app-root>がエントリーポイント
+// 2. main.ts → app.module.ts → AppComponent の順で読み込まれる
+// 3. selector: 'app-root'でHTML要素を特定
+// 4. app.component.htmlの内容が実際にブラウザに表示される
 @Component({
-  selector: 'app-root',        // HTML要素として使用される名前
-  templateUrl: './app.component.html',  // 表示するHTMLテンプレート
-  styleUrls: ['./app.component.css'],   // 適用するCSSスタイル
+  selector: 'app-root',                    // HTML要素として使用される名前（index.htmlと対応）
+  templateUrl: './app.component.html',     // 表示するHTMLテンプレートファイル
+  styleUrls: ['./app.component.css'],      // 適用するCSSスタイルファイル
 })
 export class AppComponent {
-  title = 'Tour of Heroes';  // HTMLテンプレートで{{title}}として表示される
+  // titleプロパティ：HTMLテンプレートで{{title}}として補間表示される
+  // プロパティの値を変更すると、リアルタイムでブラウザ表示も更新される
+  title = 'Tour of Heroes';
 }

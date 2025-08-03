@@ -1,4 +1,7 @@
+// ヒーローオブジェクトの構造を定義するインターフェース
+// TypeScriptのインターフェースは型安全性を提供し、
+// オブジェクトがどのような形式であるべきかを明確に定義する
 export interface Hero {
-  id: number;
-  name: string;
+  id: number;    // ヒーローの一意識別子（数値型）
+  name: string;  // ヒーローの名前（文字列型）
 }
