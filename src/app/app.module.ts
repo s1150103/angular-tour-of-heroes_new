@@ -1,6 +1,7 @@
 // Angular関連のモジュールとコンポーネントをインポート
 import { NgModule } from '@angular/core';                    // NgModuleデコレータ
 import { BrowserModule } from '@angular/platform-browser';    // ブラウザ用基本機能
+import { CommonModule } from '@angular/common';              // NgIf, NgFor, UpperCasePipeなど
 
 import { AppRoutingModule } from './app-routing.module';      // ルーティング設定
 import { AppComponent } from './app.component';              // メインコンポーネント
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';               // フォーム機�
   // imports: このモジュールが依存する他のモジュールを指定
   imports: [
     BrowserModule,      // ブラウザ用の基本機能（DOM操作、イベント処理など）
+    CommonModule,       // NgIf, NgFor, UpperCasePipeなどの基本ディレクティブ
     FormsModule,        // フォーム機能（双方向データバインディング[(ngModel)]に必要）
     AppRoutingModule    // ルーティング機能（ページ遷移管理）
   ],

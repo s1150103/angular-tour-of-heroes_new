@@ -28,60 +28,98 @@
   
   例：hero.name = "Windstorm" → "WINDSTORM Details" と表示される
 -->
-<h2>{{hero.name | uppercase}} Details</h2>
 
 <!-- 
   ==================================================
-  ヒーロー情報の表示部分
+  ヒーローリスト表示部分
   ==================================================
 -->
-<!-- 
-  ヒーローIDの表示：
-  - {{hero.id}}：heroオブジェクトのidプロパティ（number型）を文字列として表示
-  - spanタグ：ラベル部分のスタイリング用
--->
-<div><span>id: </span>{{hero.id}}</div>
-
-<!-- 
-  ヒーロー名の表示：
-  - {{hero.name}}：heroオブジェクトのnameプロパティ（string型）を表示
-  - 上のh2タグと同じデータだが、パイプ変換なしでそのまま表示
--->
-<div><span>name: </span>{{hero.name}}</div>
-
-<!-- 
-  ==================================================
-  ヒーロー名前の編集フォーム部分
-  ==================================================
--->
-<div>
+<h2>My Heroes</h2>
+<!-- ヒーローリストをul要素で表示 -->
+<ul class="heroes">
   <!-- 
-    ラベル要素：
-    - for="name"：下のinput要素のid属性と関連付け
-    - アクセシビリティ向上（スクリーンリーダー対応など）
-    - ラベルクリックでinputにフォーカスが移る
+    *ngFor構造ディレクティブを使用してheroesの各アイテムをループ処理
+    - let hero of heroes: 配列の各要素をhero変数として取得
+    - (click)="onSelect(hero)": クリック時にonSelectメソッドを呼び出し、選択されたheroを渡す
+    - [class.selected]: 条件付きクラスバインディング
+      hero === selectedHero が true の場合のみ "selected" クラスを追加
+      これにより選択されたヒーローがハイライト表示される
   -->
-  <label for="name">Hero name: </label>
-  
+  <li *ngFor="let hero of heroes" 
+      (click)="onSelect(hero)" 
+      [class.selected]="hero === selectedHero">
+    <!-- バッジ部分：ヒーローのIDを表示 -->
+    <span class="badge">{{hero.id}}</span> 
+    <!-- ヒーロー名を表示 -->
+    {{hero.name}}
+  </li>
+</ul>
+
+<!-- 
+  ==================================================
+  選択されたヒーローの詳細表示部分
+  ==================================================
+-->
+<!-- 
+  *ngIf構造ディレクティブ：selectedHeroが存在する場合のみこのdivを表示
+  selectedHero が null または undefined の場合、この全体が非表示になる
+-->
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+
   <!-- 
-    双方向データバインディングの例：
-    - [(ngModel)]="hero.name"：バナナインボックス構文
-    - [ ]：プロパティバインディング（コンポーネント → ビュー）
-    - ( )：イベントバインディング（ビュー → コンポーネント）
-    - 組み合わせ：データの双方向同期
-    
-    動作の仕組み：
-    1. ユーザーがinputに文字を入力
-    2. 自動的にhero.nameプロパティが更新される
-    3. 上のh2とdivの{{hero.name}}表示も即座に更新される
-    
-    必要な設定：
-    - app.module.tsでFormsModuleをimportする必要がある
-    - FormsModuleがないと[(ngModel)]は動作しない
-    
-    その他の属性：
-    - id="name"：ラベルとの関連付け用
-    - placeholder="name"：入力フィールドのヒントテキスト
+    ==================================================
+    ヒーロー情報の表示部分
+    ==================================================
   -->
-  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+  <!-- 
+    ヒーローIDの表示：
+    - {{selectedHero.id}}：heroオブジェクトのidプロパティ（number型）を文字列として表示
+    - spanタグ：ラベル部分のスタイリング用
+  -->
+  <div><span>id: </span>{{selectedHero.id}}</div>
+
+  <!-- 
+    ヒーロー名の表示：
+    - {{selectedHero.name}}：heroオブジェクトのnameプロパティ（string型）を表示
+    - 上のh2タグと同じデータだが、パイプ変換なしでそのまま表示
+  -->
+  <div><span>name: </span>{{selectedHero.name}}</div>
+
+  <!-- 
+    ==================================================
+    ヒーロー名前の編集フォーム部分
+    ==================================================
+  -->
+  <div>
+    <!-- 
+      ラベル要素：
+      - for="name"：下のinput要素のid属性と関連付け
+      - アクセシビリティ向上（スクリーンリーダー対応など）
+      - ラベルクリックでinputにフォーカスが移る
+    -->
+    <label for="name">Hero name: </label>
+    
+    <!-- 
+      双方向データバインディングの例：
+      - [(ngModel)]="selectedHero.name"：バナナインボックス構文
+      - [ ]：プロパティバインディング（コンポーネント → ビュー）
+      - ( )：イベントバインディング（ビュー → コンポーネント）
+      - 組み合わせ：データの双方向同期
+      
+      動作の仕組み：
+      1. ユーザーがinputに文字を入力
+      2. 自動的にselectedHero.nameプロパティが更新される
+      3. 上のh2とdivの{{selectedHero.name}}表示も即座に更新される
+      
+      必要な設定：
+      - app.module.tsでFormsModuleをimportする必要がある
+      - FormsModuleがないと[(ngModel)]は動作しない
+      
+      その他の属性：
+      - id="name"：ラベルとの関連付け用
+      - placeholder="name"：入力フィールドのヒントテキスト
+    -->
+    <input id="name" [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
 </div>
