@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';      // ルーティン
 import { AppComponent } from './app.component';              // メインコンポーネント
 import { HeroesComponent } from './heroes/heroes.component'; // ヒーローコンポーネント
 import { HeroDetailComponent } from './hero-detail/hero-detail.component'; // ヒーロー詳細コンポーネント
-import { FormsModule } from '@angular/forms';                             // フォーム機能（[(ngModel)]で必要）
+import { FormsModule } from '@angular/forms';
+// import { MessagesComponent } from './messages/messages.component';                             // フォーム機能（[(ngModel)]で必要）
 
 // @NgModuleデコレータ：Angularアプリケーションの設定を定義
 // NgModuleベースのアーキテクチャでは、すべてのコンポーネントがここで管理される
@@ -16,7 +17,7 @@ import { FormsModule } from '@angular/forms';                             // フ
   declarations: [
     AppComponent,        // ルートコンポーネント（アプリのメイン画面）
     HeroesComponent,     // ヒーロー管理コンポーネント（ヒーロー表示・編集機能）
-    HeroDetailComponent  // ヒーロー詳細コンポーネント（選択されたヒーローの詳細表示）
+    HeroDetailComponent, // MessagesComponent  // ヒーロー詳細コンポーネント（選択されたヒーローの詳細表示）
   ],
   // imports: このモジュールが依存する他のモジュールを指定
   imports: [

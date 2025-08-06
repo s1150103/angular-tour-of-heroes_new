@@ -1,69 +1,34 @@
-// ====================================================================
-// インポート部分：必要なAngularライブラリとカスタムファイルを読み込み
-// ====================================================================
+import { Component, OnInit } from '@angular/core';
 
-// AngularのコアライブラリからComponentデコレータをインポート
-import { Component } from '@angular/core';
+import { Hero } from '../hero';
+// import { HeroService } from '../hero.service';
+// import { MessageService } from '../message.service';
 
-// 親ディレクトリのhero.tsファイルからHeroインターフェースをインポート
-// 注意: TypeScriptでは.js拡張子を指定するが、実際には.tsファイルが読み込まれる
-import { Hero } from '../hero.js';
-
-// Angular共通ライブラリから構造ディレクティブとパイプをインポート
-// これらはapp.module.tsのCommonModuleで提供される
-import {
-  NgIf,        // 条件付き表示用（*ngIf）
-  NgFor,       // ループ処理用（*ngFor）
-  UpperCasePipe, // 大文字変換用（| uppercase）
-} from '@angular/common';
-
-// フォーム機能ライブラリをインポート（双方向データバインディング用）
-import {FormsModule} from '@angular/forms';
-
-// モックデータ（テスト用のヒーローデータ配列）をインポート
-import {HEROES} from '../mock-heroes';
-
-// ====================================================================
-// コンポーネント定義部分
-// ====================================================================
-
-// @Componentデコレータ：このクラスがAngularコンポーネントであることを宣言
 @Component({
-  selector: 'app-heroes',                    // HTMLで使用するカスタムタグ名
-  templateUrl: './heroes.component.html',   // テンプレートファイルのパス
-  styleUrls: ['./heroes.component.css']     // スタイルファイルのパス（配列形式）
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
 })
+export class HeroesComponent implements OnInit {
 
-// ====================================================================
-// HeroesComponentクラス：ヒーロー一覧と詳細表示の機能を提供
-// ====================================================================
-export class HeroesComponent {
-  
-  // ====================================================================
-  // プロパティ定義
-  // ====================================================================
-  
-  // heroes: 表示するヒーローの配列データ（HEROES配列からデータを取得）
-  heroes = HEROES;
-  
-  // selectedHero: ユーザーが選択したヒーロー（初期値は未選択状態のundefined）
-  // ?マークは「オプショナルプロパティ」を意味し、undefinedまたはHero型の値を持つ
   selectedHero?: Hero;
 
-  // ====================================================================
-  // メソッド定義
-  // ====================================================================
-  
-  /**
-   * ヒーロー選択処理メソッド
-   * ユーザーがヒーローリストの項目をクリックした時に呼び出される
-   * 
-   * @param hero - 選択されたヒーローオブジェクト
-   * @returns void - 戻り値なし
-   */
-  onSelect(hero: Hero): void {
-    // 選択されたヒーローをselectedHeroプロパティに設定
-    // これによりテンプレートの詳細表示部分が更新される
-    this.selectedHero = hero;
+  heroes: Hero[] = [];
+
+  // constructor(private heroService: HeroService, private messageService: MessageService) { }
+  constructor() { }
+
+  ngOnInit(): void {
+    // this.getHeroes();
   }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    // this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  }
+
+  // getHeroes(): void {
+  //   this.heroService.getHeroes()
+  //       .subscribe(heroes => this.heroes = heroes);
+  // }
 }
