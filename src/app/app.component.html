@@ -1,17 +1,7 @@
-<!-- 
-  AppComponentのテンプレート：アプリケーションのメイン画面
-  
-  このHTMLファイルの内容がブラウザに実際に表示される：
-  1. index.htmlの<app-root>要素の中にこの内容が挿入される
-  2. {{title}}は補間（interpolation）でapp.component.tsのtitleプロパティの値を表示
-  3. <app-heroes>はHeroesComponentを埋め込む（子コンポーネント）
--->
-
-<!-- アプリケーションのタイトルを表示 -->
-<!-- {{title}}はapp.component.tsのtitleプロパティの値（'Tour of Heroes'）が表示される -->
 <h1>{{title}}</h1>
-
-<!-- ヒーローコンポーネントを埋め込み -->
-<!-- app-heroesはHeroesComponentのselectorに対応 -->
-<!-- この要素にheroes.component.htmlの内容が表示される -->
-<app-heroes></app-heroes>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
