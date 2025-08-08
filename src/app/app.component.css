@@ -1,21 +1,29 @@
 /* AppComponent's private CSS styles */
+/* アプリケーション全体のナビゲーションスタイル */
+
+/* メインタイトルのスタイル */
 h1 {
-  margin-bottom: 0;
-}
-nav a {
-  padding: 1rem;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #e8e8e8;
-  color: #3d3d3d;
-  border-radius: 4px;
+  margin-bottom: 0; /* タイトル下の余白を削除 */
 }
 
-nav a:hover {
-  color: white;
-  background-color: #42545C;
+/* ナビゲーションリンクの基本スタイル */
+nav a {
+  padding: 1rem; /* 内側の余白 */
+  text-decoration: none; /* 下線を削除 */
+  margin-top: 10px; /* 上の余白 */
+  display: inline-block; /* インラインブロック要素に */
+  background-color: #e8e8e8; /* 背景色（薄いグレー） */
+  color: #3d3d3d; /* 文字色（濃いグレー） */
+  border-radius: 4px; /* 角を丸く */
 }
+
+/* ナビゲーションリンクのホバー時（マウスが乗った時） */
+nav a:hover {
+  color: white; /* 文字色を白に */
+  background-color: #42545C; /* 背景色を濃いブルーグレーに */
+}
+
+/* ナビゲーションリンクのアクティブ時（クリックされた時） */
 nav a:active {
-  background-color: black;
+  background-color: black; /* 背景色を黒に */
 }

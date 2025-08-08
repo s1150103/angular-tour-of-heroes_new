@@ -1,50 +1,60 @@
 /* DashboardComponent's private CSS styles */
+/* ダッシュボード画面のスタイル */
 
+/* メインタイトル */
 h2 {
-  text-align: center;
+  text-align: center; /* 中央揃え */
 }
 
+/* トップヒーロー表示コンテナ */
 .heroes-menu {
-  padding: 0;
-  margin: auto;
-  max-width: 1000px;
+  padding: 0; /* 内側余白なし */
+  margin: auto; /* 中央揃え */
+  max-width: 1000px; /* 最大幅制限 */
 
-  /* flexbox */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: flex-start;
+  /* flexboxレイアウト設定 */
+  display: -webkit-box; /* 旧Safari対応 */
+  display: -moz-box; /* 旧Firefox対応 */
+  display: -ms-flexbox; /* IE10対応 */
+  display: -webkit-flex; /* Safari対応 */
+  display: flex; /* 標準のflex */
+  flex-direction: row; /* 横並び */
+  flex-wrap: wrap; /* 折り返しあり */
+  justify-content: space-around; /* 要素間に空白を均等に配置 */
+  align-content: flex-start; /* 上揃え */
+  align-items: flex-start; /* 上揃え */
 }
 
+/* トップヒーローカードのスタイル */
 a {
-  background-color: #3f525c;
-  border-radius: 2px;
-  padding: 1rem;
-  font-size: 1.2rem;
-  text-decoration: none;
-  display: inline-block;
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  min-width: 70px;
-  margin: .5rem auto;
-  box-sizing: border-box;
+  background-color: #3f525c; /* 背景色（濃いブルーグレー） */
+  border-radius: 2px; /* 角を少し丸く */
+  padding: 1rem; /* 内側余白 */
+  font-size: 1.2rem; /* フォントサイズ */
+  text-decoration: none; /* 下線を削除 */
+  display: inline-block; /* インラインブロック要素 */
+  color: #fff; /* 文字色を白に */
+  text-align: center; /* 中央揃え */
+  width: 100%; /* 幅を100%に */
+  min-width: 70px; /* 最小幅設定 */
+  margin: .5rem auto; /* 上下余白と中央揃え */
+  box-sizing: border-box; /* パディングを含む幅計算 */
 
-  /* flexbox */
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
+  /* flexbox設定 */
+  order: 0; /* 表示順序 */
+  flex: 0 1 auto; /* 伸縮設定 */
+  align-self: auto; /* 自分自身の揃え */
 }
 
+/* タブレット以上のサイズ用のスタイル */
 @media (min-width: 600px) {
   a {
-    width: 18%;
-    box-sizing: content-box;
+    width: 18%; /* 幅を約五分の一に */
+    box-sizing: content-box; /* パディングを除外した幅計算 */
   }
 }
 
+/* トップヒーローカードのホバー時 */
 a:hover {
-  background-color: #000;
+  background-color: black; /* 背景色を黒に */
 }

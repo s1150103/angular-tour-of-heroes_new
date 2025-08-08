@@ -1,54 +1,104 @@
 /* HeroesComponent's private CSS styles */
+/* ヒーロー一覧画面のスタイル */
+
+/* ヒーローリストコンテナ */
 .heroes {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
+  margin: 0 0 2em 0; /* 上下左右の余白設定 */
+  list-style-type: none; /* リストマーカーを非表示 */
+  padding: 0; /* 内側の余白を削除 */
+  width: 15em; /* 幅を固定 */
 }
+
+/* 新しいヒーロー名の入力フィールド */
+input {
+  display: block; /* ブロック要素として表示 */
+  width: 100%; /* 幅を100%に */
+  padding: .5rem; /* 内側の余白 */
+  margin: 1rem 0; /* 上下の余白 */
+  box-sizing: border-box; /* パディングを含む幅計算 */
+}
+
+/* ヒーローリストの各アイテム */
 .heroes li {
-  position: relative;
-  cursor: pointer;
+  position: relative; /* 相対位置指定 */
+  cursor: pointer; /* マウスカーソルをポインターに */
 }
 
+/* ヒーローリストアイテムのホバー時 */
 .heroes li:hover {
-  left: .1em;
+  left: .1em; /* 少し右にずらして立体感を演出 */
 }
 
+/* ヒーローリンクの基本スタイル */
 .heroes a {
-  color: #333;
-  text-decoration: none;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-  display: block;
-  width: 100%;
+  color: #333; /* 文字色（濃いグレー） */
+  text-decoration: none; /* 下線を削除 */
+  background-color: #EEE; /* 背景色（薄いグレー） */
+  margin: .5em; /* 外側の余白 */
+  padding: .3em 0; /* 上下の内側余白 */
+  height: 1.6em; /* 高さ固定 */
+  border-radius: 4px; /* 角を丸く */
+  display: block; /* ブロック要素として表示 */
+  width: 100%; /* 幅を100%に */
 }
 
+/* ヒーローリンクのホバー時 */
 .heroes a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
+  color: #2c3a41; /* 文字色を少し濃く */
+  background-color: #e6e6e6; /* 背景色を少し濃く */
 }
 
+/* ヒーローリンクのアクティブ時 */
 .heroes a:active {
-  background-color: #525252;
-  color: #fafafa;
+  background-color: #525252; /* 背景色を濃いグレーに */
+  color: #fafafa; /* 文字色を薄いグレーに */
 }
 
+/* ヒーローIDバッジ（番号表示部分） */
 .heroes .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+  display: inline-block; /* インラインブロック要素 */
+  font-size: small; /* 小さいフォントサイズ */
+  color: white; /* 文字色を白に */
+  padding: 0.8em 0.7em 0 0.7em; /* 内側余白の詳細設定 */
+  background-color: #405061; /* 背景色（濃いブルーグレー） */
+  line-height: 1em; /* 行の高さ */
+  position: relative; /* 相対位置指定 */
+  left: -1px; /* 少し左にずらす */
+  top: -4px; /* 少し上にずらす */
+  height: 1.8em; /* 高さ固定 */
+  min-width: 16px; /* 最小幅設定 */
+  text-align: right; /* 右寄せ */
+  margin-right: .8em; /* 右側の余白 */
+  border-radius: 4px 0 0 4px; /* 左側のみ角を丸く */
+}
+
+/* 新しいヒーロー追加ボタン */
+.add-button {
+ padding: .5rem 1.5rem; /* 内側余白（上下・左右） */
+ font-size: 1rem; /* フォントサイズ */
+ margin-bottom: 2rem; /* 下の余白 */
+}
+
+/* 追加ボタンのホバー時 */
+.add-button:hover {
+  color: white; /* 文字色を白に */
+  background-color: #42545C; /* 背景色を濃いブルーグレーに */
+}
+
+/* ヒーロー削除ボタン */
+button.delete {
+  position: absolute; /* 絶対位置指定 */
+  left: 210px; /* 左から210px */
+  top: 5px; /* 上から5px */
+  background-color: white; /* 背景色を白に */
+  color:  #525252; /* 文字色をグレーに */
+  font-size: 1.1rem; /* フォントサイズ */
+  margin: 0; /* 余白なし */
+  padding: 1px 10px 3px 10px; /* 内側余白の詳細設定 */
+}
+
+/* 削除ボタンのホバー時 */
+button.delete:hover {
+  background-color: #525252; /* 背景色をグレーに */
+  color: white; /* 文字色を白に */
 }

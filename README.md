@@ -36,6 +36,69 @@ Angularの公式チュートリアル「Tour of Heroes」を**NgModuleベース*
 
 ## 🔄 ブランチ間の違い
 
+### `5-Add-navigation` から `6-Get-data-from-a-server`（現在） への改良点
+
+#### 🌐 HTTP通信の実装
+- **HTTPクライアント**: Angular HttpClientを導入し、サーバーとの通信機能を実装
+- **インメモリWebAPI**: `angular-in-memory-web-api`を使用した模擬サーバー環境の構築
+- **RESTful API**: CRUD操作をHTTPリクエスト経由で実行可能に
+- **ヒーロー検索機能**: リアルタイム検索コンポーネントの追加
+- **メッセージサービス**: HTTPエラーハンドリングとユーザー通知機能の強化
+
+#### 📁 新規追加ファイル
+```
++ src/app/in-memory-data.service.ts      # インメモリWebAPIサービス
++ src/app/in-memory-data.service.spec.ts # テストファイル
++ src/app/hero-search/                   # ヒーロー検索コンポーネント
+  ├── hero-search.component.ts           # 検索ロジック
+  ├── hero-search.component.html         # 検索UI
+  ├── hero-search.component.css          # 検索スタイル
+  └── hero-search.component.spec.ts      # 検索テスト
++ src/app/messages/                      # メッセージ表示コンポーネント
+  ├── messages.component.ts              # メッセージ管理
+  ├── messages.component.html            # メッセージ表示
+  ├── messages.component.css             # メッセージスタイル
+  └── messages.component.spec.ts         # メッセージテスト
+```
+
+#### 🔧 主要な改良・修正
+1. **HeroService改良**: HTTP通信ベースの完全なCRUD操作（作成・読取・更新・削除）
+2. **エラーハンドリング**: HTTPエラーの適切な処理とユーザーフィードバック
+3. **ヒーロー追加機能**: 新しいヒーローを動的に追加可能
+4. **ヒーロー削除機能**: 不要なヒーローの削除機能
+5. **ヒーロー更新機能**: 既存ヒーロー情報の更新とサーバー同期
+6. **検索機能**: 名前による部分一致検索とオートコンプリート
+
+#### 🔄 実装の進化
+| 機能 | `5-Add-navigation` | `6-Get-data-from-a-server`（現在） |
+|------|-------------------|----------------------------------|
+| データソース | 静的モックデータ | ✅ **HTTP API経由** |
+| ヒーロー取得 | ローカル配列 | ✅ **HTTP GET** |
+| ヒーロー更新 | ローカル変更のみ | ✅ **HTTP PUT** |
+| ヒーロー追加 | ❌ なし | ✅ **HTTP POST** |
+| ヒーロー削除 | ❌ なし | ✅ **HTTP DELETE** |
+| 検索機能 | ❌ なし | ✅ **新規実装** |
+| エラー処理 | 基本的なもの | ✅ **HTTP専用エラーハンドリング** |
+| メッセージ通知 | 基本機能 | ✅ **専用コンポーネント化** |
+
+#### 🎯 技術的改善点
+- **非同期処理**: RxJSのObservableによる適切な非同期データ処理
+- **HTTPインターセプター**: 統一的なHTTPエラーハンドリング
+- **検索最適化**: debounceTimeによる効率的な検索クエリ処理
+- **UX向上**: ローディング状態の表示と適切なフィードバック
+- **データ永続化**: サーバーサイドでのデータ保持（模擬環境）
+
+#### 🌐 HTTP API エンドポイント
+```typescript
+// ベースURL: api/heroes
+GET    /api/heroes           // 全ヒーロー取得
+GET    /api/heroes/:id       // 特定ヒーロー取得
+POST   /api/heroes           // 新ヒーロー作成
+PUT    /api/heroes/:id       // ヒーロー更新
+DELETE /api/heroes/:id       // ヒーロー削除
+GET    /api/heroes/?name=:term // 名前検索
+```
+
 ### `4-Add-service` から `5-Add-navigation` への改良点
 
 #### 🚀 新機能の追加
